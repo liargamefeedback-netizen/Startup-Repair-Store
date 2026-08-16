@@ -1,0 +1,13 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Local server logs
+nohup.out
