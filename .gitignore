@@ -9,5 +9,7 @@ Thumbs.db
 __pycache__/
 *.py[cod]
 
-# Local server logs
+# Local server & automation logs
 nohup.out
+*.log
+.auto-sync*

@@ -1,0 +1,13 @@
+{
+  "name": "Startup Repair Store",
+  "short_name": "Startup Repair",
+  "description": "Device repair services (online, courier, home pickup) and cheap electronic accessories with bulk pricing.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f1f5f9",
+  "theme_color": "#2563eb",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

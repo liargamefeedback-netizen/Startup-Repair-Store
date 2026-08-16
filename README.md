@@ -40,10 +40,21 @@ The UI mirrors the polish of major platforms like Flipkart and Amazon — built 
 
 ```
 Startup_Repair_Store/
-├── index.html      # All page sections (header, hero, repair, store, footer)
-├── css/style.css   # Design system, components & media queries
-├── js/main.js      # Product data, filters, cart + bulk logic, repair wizard
-└── .gitignore
+├── index.html              # Main page (header, hero, repair, store, footer)
+├── 404.html                # Friendly not-found page
+├── favicon.svg             # Site icon
+├── manifest.webmanifest    # PWA metadata (name, theme, icon)
+├── robots.txt              # Search-engine crawl rules
+├── LICENSE                 # MIT license
+├── README.md
+├── .gitignore
+├── css/
+│   └── style.css           # Design system, components & media queries
+├── js/
+│   └── main.js             # Product data, filters, cart + bulk logic, repair wizard
+├── scripts/
+│   └── auto-sync.sh        # Watcher: auto-commit & auto-push to GitHub
+└── assets/                 # (future) images, fonts, icons
 ```
 
 ---
@@ -67,6 +78,31 @@ npx serve .
 ## 🛒 Bulk orders
 
 For shops/resellers: use the **"Request Bulk Price List"** form inside the site, or contact the team at [hello@startuprepairstore.com](mailto:hello@startuprepairstore.com). Minimum bulk order ₹1,500 · GST invoice available. · COD available · Easy returns.
+
+---
+
+## 🔄 Auto-sync to GitHub
+
+Any change saved in this folder is **automatically committed and pushed** to GitHub:
+
+1. **Run the watcher once** (it stays alive in the background):
+   ```bash
+   chmod +x scripts/auto-sync.sh
+   nohup scripts/auto-sync.sh > /tmp/auto_sync.log 2>&1 &
+   ```
+2. Edit `index.html`, `css/`, `js/`, or any file — within ~10 seconds it's pushed with a
+   message like `Auto-sync: 2026-08-16 10:45:22`.
+3. **Check it's alive:** `pgrep -af auto-sync.sh` · **See its log:** `tail -f /tmp/auto_sync.log`
+4. **Stop it:** `pkill -f auto-sync.sh`
+
+### Requirements for auto-push
+
+- Git **push access** to `origin` must be non-interactive (no password prompt). The easiest way:
+  ```bash
+  git config --global credential.helper store   # cache credentials safely (file is chmod 600)
+  git push origin main                          # log in once with your PAT; it is saved
+  ```
+- The watcher uses the same Git identity as your local repo (`user.name` / `user.email`).
 
 ---
 
